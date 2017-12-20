@@ -92,6 +92,10 @@ class PublishFilterSubscriber implements EventSubscriberInterface
      */
     protected function isDisabledFirewall(Request $request)
     {
+        if (null === $this->firewallMap->getFirewallConfig($request)) {
+            return false;
+        }
+
         return in_array($this->firewallMap->getFirewallConfig($request)->getName(), $this->disabledFirewalls);
     }
 }
