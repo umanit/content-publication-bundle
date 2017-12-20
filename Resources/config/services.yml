@@ -1,0 +1,10 @@
+services:
+    umanit_content_publication.event_subscriber.publish_filter_subscriber:
+        class: Umanit\ContentPublicationBundle\EventSubscriber\PublishFilterSubscriber
+        arguments:
+            - '@security.token_storage'
+            - '@doctrine.orm.entity_manager'
+            - '@security.firewall.map'
+            - '%umanit_content_publication.disabled_firewalls%'
+        tags:
+            - { name: kernel.event_subscriber }

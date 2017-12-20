@@ -1,0 +1,25 @@
+{
+    "name": "umanit/content-publication-bundle",
+    "description": "A simple yet efficient publishing bundle.",
+    "type": "symfony-bundle",
+    "keywords": ["symfony", "doctrine", "publication"],
+    "homepage": "https://github.com/umanit/content-publication-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "UmanIT",
+            "email": "contact@umanit.fr"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "symfony/symfony": ">=2.8",
+        "doctrine/doctrine-bundle": "^1.6",
+        "doctrine/orm": "^2.5"
+    },
+    "minimum-stability": "stable",
+    "target-dir": "Umanit/ContentPublicationBundle",
+    "autoload": {
+        "psr-0": { "Umanit\\ContentPublicationBundle": "" }
+    }
+}
