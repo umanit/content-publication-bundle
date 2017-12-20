@@ -29,7 +29,7 @@ class PublishFilter extends SQLFilter
             $publishDateCol   = $targetEntity->fieldMappings['publishDate']['columnName'];
             $unpublishDateCol = $targetEntity->fieldMappings['unpublishDate']['columnName'];
 
-            return strtr("%table%.%publishDate% >= '%now%' AND (%table%.%unpublishDate% IS NULL OR %table%.%unpublishDate% > '%now%')", [
+            return strtr("%table%.%publishDate% <= '%now%' AND (%table%.%unpublishDate% IS NULL OR %table%.%unpublishDate% > '%now%')", [
                 '%table%'         => $targetTableAlias,
                 '%now%'           => $now->format('Y-m-d H:i:s'),
                 '%publishDate%'   => $publishDateCol,

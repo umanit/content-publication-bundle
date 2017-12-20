@@ -18,4 +18,16 @@ interface PublishableInterface
      * @return $this
      */
     public function setPublishDate(\DateTime $publishDate = null);
+
+    /**
+     * @return \DateTime
+     */
+    public function getUnpublishDate();
+
+    /**
+     * @param \DateTime $unpublishDate
+     *
+     * @return $this
+     */
+    public function setUnpublishDate(\DateTime $unpublishDate = null);
 }
