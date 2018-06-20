@@ -12,7 +12,7 @@ trait PublishableTrait
 {
     /**
      * @var \DateTime
-     * @ORM\Column(type="datetime", name="publish_date")
+     * @ORM\Column(type="datetime", name="publish_date", nullable=true)
      * @Assert\NotBlank()
      * @Assert\DateTime()
      */
