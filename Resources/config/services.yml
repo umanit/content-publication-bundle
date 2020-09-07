@@ -2,7 +2,6 @@ services:
     umanit_content_publication.event_subscriber.publish_filter_subscriber:
         class: Umanit\ContentPublicationBundle\EventSubscriber\PublishFilterSubscriber
         arguments:
-            - '@security.csrf.token_storage'
             - '@doctrine.orm.entity_manager'
             - '@security.firewall.map'
             - '%umanit_content_publication.disabled_firewalls%'

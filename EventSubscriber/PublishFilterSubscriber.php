@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface;
 use Symfony\Component\Security\Http\Firewall;
 
 /**
@@ -21,11 +20,6 @@ use Symfony\Component\Security\Http\Firewall;
  */
 class PublishFilterSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @var TokenStorageInterface
-     */
-    private $tokenStorage;
-
     /**
      * @var EntityManagerInterface
      */
@@ -44,18 +38,15 @@ class PublishFilterSubscriber implements EventSubscriberInterface
     /**
      * PublishFilterSubscriber constructor.
      *
-     * @param TokenStorageInterface  $tokenStorage
      * @param EntityManagerInterface $em
      * @param FirewallMap            $firewallMap
      * @param array                  $disabledFirewalls
      */
     public function __construct(
-        TokenStorageInterface $tokenStorage,
         EntityManagerInterface $em,
         FirewallMap $firewallMap,
         $disabledFirewalls
     ) {
-        $this->tokenStorage = $tokenStorage;
         $this->em = $em;
         $this->disabledFirewalls = $disabledFirewalls;
         $this->firewallMap = $firewallMap;
