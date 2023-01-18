@@ -19,16 +19,14 @@ Implement the interface `PublishableInterface` and use the trait `PublishableTra
 ```php
 <?php
 
-namespace AppBundle\Entity\Content;
+namespace App\Entity\Content;
 
 use Doctrine\ORM\Mapping as ORM;
 use Umanit\ContentPublicationBundle\Doctrine\Model\PublishableInterface;
 use Umanit\ContentPublicationBundle\Doctrine\Model\PublishableTrait;
 
-/**
- * @ORM\Table(name="news")
- * @ORM\Entity()
- */
+#[ORM\Table(name: 'news')]
+#[ORM\Entity]
 class News implements PublishableInterface
 {
     use PublishableTrait;
@@ -44,7 +42,7 @@ Usually you'll need to administrate your contents.
 For doing so, you can disable the filter by configuring the `disabled_firewalls` option.
 
 ```yaml
-# app/config/config.yml
+# config/packages/umanit_content_publication.yaml
 umanit_content_publication:
     disabled_firewalls: ['admin']
 ```

@@ -5,21 +5,21 @@ namespace Umanit\ContentPublicationBundle\Doctrine\Model;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @author Arthur Guigand <aguigand@umanit.fr>
- */
 trait PublishableTrait
 {
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      * @ORM\Column(type="datetime", name="publish_date", nullable=true)
      * @Assert\NotBlank()
      * @Assert\DateTime()
      */
-    protected $publishDate;
+    #[ORM\Column(name: 'publish_date', type: 'datetime', nullable: true)]
+    #[Assert\NotBlank]
+    #[Assert\DateTime]
+    protected ?\DateTimeInterface $publishDate;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      * @ORM\Column(type="datetime", name="unpublish_date", nullable=true)
      * @Assert\DateTime()
      * @Assert\Expression(
@@ -27,50 +27,38 @@ trait PublishableTrait
      *     message="The unpublish date must be greater than the publish date"
      * )
      */
-    protected $unpublishDate;
+    #[ORM\Column(name: 'unpublish_date', type: 'datetime', nullable: true)]
+    #[Assert\Expression(
+        expression: 'this.getUnpublishDate() == null or this.getUnpublishDate() > this.getPublishDate()',
+        message: 'The unpublish date must be greater than the publish date'
+    )]
+    #[Assert\DateTime]
+    protected ?\DateTimeInterface $unpublishDate;
 
-    /**
-     * PublishableTrait constructor.
-     */
     public function __construct()
     {
         $this->publishDate = new \DateTime();
+        $this->unpublishDate = new \DateTime();
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getPublishDate()
+    public function getPublishDate(): ?\DateTimeInterface
     {
         return $this->publishDate;
     }
 
-    /**
-     * @param \DateTime $publishDate
-     *
-     * @return $this
-     */
-    public function setPublishDate(\DateTime $publishDate = null)
+    public function setPublishDate(?\DateTimeInterface $publishDate = null): self
     {
         $this->publishDate = $publishDate;
 
         return $this;
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getUnpublishDate()
+    public function getUnpublishDate(): ?\DateTimeInterface
     {
         return $this->unpublishDate;
     }
 
-    /**
-     * @param \DateTime $unpublishDate
-     *
-     * @return $this
-     */
-    public function setUnpublishDate(\DateTime $unpublishDate = null)
+    public function setUnpublishDate(?\DateTimeInterface $unpublishDate = null): self
     {
         $this->unpublishDate = $unpublishDate;
 
@@ -82,7 +70,7 @@ trait PublishableTrait
      *
      * @return bool
      */
-    public function isPublished()
+    public function isPublished(): bool
     {
         $now = new \DateTime();
 
@@ -90,5 +78,4 @@ trait PublishableTrait
             (null === $this->getUnpublishDate() && $this->getPublishDate() <= $now) ||
             ($now <= $this->getUnpublishDate() && $this->getPublishDate() <= $now);
     }
-
 }

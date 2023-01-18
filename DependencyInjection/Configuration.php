@@ -17,11 +17,13 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode    = $treeBuilder->root('umanit_content_publication');
+        $treeBuilder = new TreeBuilder('umanit_content_publication');
+        $rootNode = $treeBuilder->getRootNode();
+
         $rootNode
             ->children()
-                ->arrayNode('disabled_firewalls')->info("Defines the firewalls where the filter should be disabled (ex: admin)")
+                ->arrayNode('disabled_firewalls')
+                    ->info("Defines the firewalls where the filter should be disabled (ex: admin)")
                     ->prototype('scalar')->end()->defaultValue([])
                 ->end()
             ->end()
