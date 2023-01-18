@@ -3,45 +3,22 @@
 namespace Umanit\ContentPublicationBundle\EventSubscriber;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\SecurityBundle\Security\FirewallConfig;
 use Symfony\Bundle\SecurityBundle\Security\FirewallMap;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Http\Firewall;
 
 /**
  * The PublishFilterSubscriber disables the PublishFilter based on the config
  * umanit_content_publication.disabled_firewalls
- *
- * @author Arthur Guigand <aguigand@umanit.fr>
  */
 class PublishFilterSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $em;
+    private EntityManagerInterface $em;
+    private array $disabledFirewalls;
+    private FirewallMap $firewallMap;
 
-    /**
-     * @var array
-     */
-    private $disabledFirewalls;
-
-    /**
-     * @var FirewallMap
-     */
-    private $firewallMap;
-
-    /**
-     * PublishFilterSubscriber constructor.
-     *
-     * @param EntityManagerInterface $em
-     * @param FirewallMap            $firewallMap
-     * @param array                  $disabledFirewalls
-     */
     public function __construct(
         EntityManagerInterface $em,
         FirewallMap $firewallMap,
@@ -52,19 +29,12 @@ class PublishFilterSubscriber implements EventSubscriberInterface
         $this->firewallMap = $firewallMap;
     }
 
-    /**
-     * {@inheritdoc}
-     * @return array
-     */
     public static function getSubscribedEvents()
     {
         return [KernelEvents::REQUEST => 'onKernelRequest'];
     }
 
-    /**
-     * @param GetResponseEvent $event
-     */
-    public function onKernelRequest(GetResponseEvent $event)
+    public function onKernelRequest(RequestEvent $event)
     {
         // Disable the publish filter if user is admin
         if ($this->isDisabledFirewall($event->getRequest())) {
@@ -81,7 +51,7 @@ class PublishFilterSubscriber implements EventSubscriberInterface
      *
      * @return bool
      */
-    protected function isDisabledFirewall(Request $request)
+    protected function isDisabledFirewall(Request $request): bool
     {
         if (null === $this->firewallMap->getFirewallConfig($request)) {
             return false;

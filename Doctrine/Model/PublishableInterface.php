@@ -2,32 +2,13 @@
 
 namespace Umanit\ContentPublicationBundle\Doctrine\Model;
 
-/**
- * @author Arthur Guigand <aguigand@umanit.fr>
- */
 interface PublishableInterface
 {
-    /**
-     * @return \DateTime
-     */
-    public function getPublishDate();
+    public function getPublishDate(): ?\DateTimeInterface;
 
-    /**
-     * @param \DateTime $publishDate
-     *
-     * @return $this
-     */
-    public function setPublishDate(\DateTime $publishDate = null);
+    public function setPublishDate(?\DateTimeInterface $publishDate = null): self;
 
-    /**
-     * @return \DateTime
-     */
-    public function getUnpublishDate();
+    public function getUnpublishDate(): ?\DateTimeInterface;
 
-    /**
-     * @param \DateTime $unpublishDate
-     *
-     * @return $this
-     */
-    public function setUnpublishDate(\DateTime $unpublishDate = null);
+    public function setUnpublishDate(?\DateTimeInterface $unpublishDate = null): self;
 }
