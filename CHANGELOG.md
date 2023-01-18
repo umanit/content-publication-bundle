@@ -7,11 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2023-01-18
+
 ### Added
 
 - Adds initial CHANGELOG
 - Adds support for PHP >= 7.4
-- Adds support for Symfony >= 5.4 
+- Adds support for Symfony >= 5.4
 - Adds typing
 - Adds attributes alongside existing annotations
 
@@ -24,6 +26,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Last release of v0.
 
-[Unreleased]: https://github.com/umanit/content-publication-bundle/compare/0.2...HEAD
+[Unreleased]: https://github.com/umanit/content-publication-bundle/compare/1.0.0...HEAD
+
+[1.0.0]: https://github.com/umanit/content-publication-bundle/compare/0.2...1.0.0
 
 [0.2.0]: https://github.com/umanit/content-publication-bundle/releases/tag/0.2
