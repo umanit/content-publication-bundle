@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removed
+
+- Asserts as attributes are removed from the trait, to avoid double declaration and still
+  provide PHP 7.4 support
+
 ## [1.0.0] - 2023-01-18
 
 ### Added
