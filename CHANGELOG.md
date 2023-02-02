@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Asserts for `publishDate` and `unpublishDate` moved from the trait to a YAML validation file
+
 ## [1.0.0] - 2023-01-18
 
 ### Added

@@ -1,0 +1,10 @@
+Umanit\ContentPublicationBundle\Doctrine\Model\PublishableInterface:
+    properties:
+        publishDate:
+            -   NotBlank: ~
+            -   DateTime: ~
+        unpublishDate:
+            -   Expression:
+                - expression: 'this.getUnpublishDate() == null or this.getUnpublishDate() > this.getPublishDate()'
+                - message: 'The unpublish date must be greater than the publish date'
+            -   DateTime: ~
