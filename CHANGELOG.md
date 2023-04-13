@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removed
+
+- Removes DateTime assertion from `PublishableTrait` as strong typecasting made it redundant
+
 ## [1.0.1] - 2023-02-02
 
 ### Removed

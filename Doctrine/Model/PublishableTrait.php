@@ -11,7 +11,6 @@ trait PublishableTrait
      * @var \DateTime|null
      * @ORM\Column(type="datetime", name="publish_date", nullable=true)
      * @Assert\NotBlank()
-     * @Assert\DateTime()
      */
     #[ORM\Column(name: 'publish_date', type: 'datetime', nullable: true)]
     protected ?\DateTimeInterface $publishDate;
@@ -19,7 +18,6 @@ trait PublishableTrait
     /**
      * @var \DateTime|null
      * @ORM\Column(type="datetime", name="unpublish_date", nullable=true)
-     * @Assert\DateTime()
      * @Assert\Expression(
      *     expression="this.getUnpublishDate() == null or this.getUnpublishDate() > this.getPublishDate()",
      *     message="The unpublish date must be greater than the publish date"
