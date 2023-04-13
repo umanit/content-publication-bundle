@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2023-04-13
+
 ### Removed
 
 - Removes DateTime assertion from `PublishableTrait` as strong typecasting made it redundant
@@ -37,7 +39,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Last release of v0.
 
-[Unreleased]: https://github.com/umanit/content-publication-bundle/compare/1.0.1...HEAD
+[Unreleased]: https://github.com/umanit/content-publication-bundle/compare/1.0.2...HEAD
+
+[1.0.2]: https://github.com/umanit/content-publication-bundle/compare/1.0.1...1.0.2
 
 [1.0.1]: https://github.com/umanit/content-publication-bundle/compare/1.0.0...1.0.1
 
