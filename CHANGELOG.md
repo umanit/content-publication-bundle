@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.3] - 2024-04-04
+
 ### Fixed
 
 - Defines the current date as a dynamic parameter in the `PublishFilter` to allow for filter cacheability
@@ -43,7 +45,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Last release of v0.
 
-[Unreleased]: https://github.com/umanit/content-publication-bundle/compare/1.0.2...HEAD
+[Unreleased]: https://github.com/umanit/content-publication-bundle/compare/1.0.3...master
+
+[1.0.3]: https://github.com/umanit/content-publication-bundle/compare/1.0.2...1.0.3
 
 [1.0.2]: https://github.com/umanit/content-publication-bundle/compare/1.0.1...1.0.2
 
