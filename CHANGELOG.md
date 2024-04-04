@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Defines the current date as a dynamic parameter in the `PublishFilter` to allow for filter cacheability
+
 ## [1.0.2] - 2023-04-13
 
 ### Removed

@@ -7,7 +7,7 @@ use Doctrine\ORM\Query\Filter\SQLFilter;
 use Umanit\ContentPublicationBundle\Doctrine\Model\PublishableInterface;
 
 /**
- * Filters translatable contents by the current locale.
+ * Filters publishable content by the current date
  */
 class PublishFilter extends SQLFilter
 {
@@ -19,11 +19,15 @@ class PublishFilter extends SQLFilter
             $publishDateCol = $targetEntity->fieldMappings['publishDate']['columnName'];
             $unpublishDateCol = $targetEntity->fieldMappings['unpublishDate']['columnName'];
 
+            // Query parameters must be used when defining dynamic parameters,
+            // as they are not cached
+            $this->setParameter('now', $now->format('Y-m-d H:i:s'));
+
             return strtr(
-                "%table%.%publishDate% IS NULL OR (%table%.%publishDate% <= '%now%' AND (%table%.%unpublishDate% IS NULL OR %table%.%unpublishDate% > '%now%'))",
+                "%table%.%publishDate% IS NULL OR (%table%.%publishDate% <= %now% AND (%table%.%unpublishDate% IS NULL OR %table%.%unpublishDate% > %now%))",
                 [
                     '%table%'         => $targetTableAlias,
-                    '%now%'           => $now->format('Y-m-d H:i:s'),
+                    '%now%'           => $this->getParameter('now'),
                     '%publishDate%'   => $publishDateCol,
                     '%unpublishDate%' => $unpublishDateCol,
                 ]
