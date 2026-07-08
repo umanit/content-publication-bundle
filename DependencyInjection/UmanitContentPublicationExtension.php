@@ -18,7 +18,7 @@ class UmanitContentPublicationExtension extends Extension implements PrependExte
     /**
      * {@inheritdoc}
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
@@ -37,7 +37,7 @@ class UmanitContentPublicationExtension extends Extension implements PrependExte
      *
      * @param ContainerBuilder $container
      */
-    public function prepend(ContainerBuilder $container)
+    public function prepend(ContainerBuilder $container): void
     {
         $container->prependExtensionConfig('doctrine', [
             'orm' => [
@@ -58,7 +58,7 @@ class UmanitContentPublicationExtension extends Extension implements PrependExte
      * @param array            $params
      * @param string           $parent
      */
-    private function setConfigAsParameters(ContainerBuilder &$container, array $params, $parent)
+    private function setConfigAsParameters(ContainerBuilder $container, array $params, string $parent): void
     {
         foreach ($params as $key => $value) {
             $name = $parent.'.'.$key;

@@ -22,19 +22,19 @@ class PublishFilterSubscriber implements EventSubscriberInterface
     public function __construct(
         EntityManagerInterface $em,
         FirewallMap $firewallMap,
-        $disabledFirewalls
+        array $disabledFirewalls
     ) {
         $this->em = $em;
         $this->disabledFirewalls = $disabledFirewalls;
         $this->firewallMap = $firewallMap;
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [KernelEvents::REQUEST => 'onKernelRequest'];
     }
 
-    public function onKernelRequest(RequestEvent $event)
+    public function onKernelRequest(RequestEvent $event): void
     {
         // Disable the publish filter if user is admin
         if ($this->isDisabledFirewall($event->getRequest())) {
