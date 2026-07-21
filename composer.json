@@ -12,14 +12,13 @@
         }
     ],
     "require": {
-        "php": "^7.4|^8.0",
-        "symfony/framework-bundle": "^5.4|^6.0",
-        "doctrine/doctrine-bundle": "^2.7",
-        "doctrine/orm": "^2.13"
+        "php": "^8.2",
+        "symfony/framework-bundle": "^5.4|^6.0|^7.0",
+        "doctrine/doctrine-bundle": "^2.7|^3.0",
+        "doctrine/orm": "^2.13|^3.0"
     },
     "minimum-stability": "stable",
-    "target-dir": "Umanit/ContentPublicationBundle",
     "autoload": {
-        "psr-0": { "Umanit\\ContentPublicationBundle": "" }
+        "psr-4": { "Umanit\\ContentPublicationBundle\\": "" }
     }
 }

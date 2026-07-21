@@ -16,8 +16,10 @@ class PublishFilter extends SQLFilter
         // If the entity is a PublishableInterface
         if (in_array(PublishableInterface::class, $targetEntity->getReflectionClass()->getInterfaceNames())) {
             $now = new \DateTime();
-            $publishDateCol = $targetEntity->fieldMappings['publishDate']['columnName'];
-            $unpublishDateCol = $targetEntity->fieldMappings['unpublishDate']['columnName'];
+            $publishMapping = $targetEntity->fieldMappings['publishDate'];
+            $unpublishMapping = $targetEntity->fieldMappings['unpublishDate'];
+            $publishDateCol = is_array($publishMapping) ? $publishMapping['columnName'] : $publishMapping->columnName;
+            $unpublishDateCol = is_array($unpublishMapping) ? $unpublishMapping['columnName'] : $unpublishMapping->columnName;
 
             // Query parameters must be used when defining dynamic parameters,
             // as they are not cached
