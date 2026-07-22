@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-07-22
+
+### Added
+
+- Add return types void to load(), prepend(), setConfigAsParameters()
+- Add return types and fix $disabledFirewalls type hint in
+  PublishFilterSubscriber
+
+### Removed
+
+- Remove docblock ORM/Assert annotations from PublishableTrait, add
+  missing PHP attribute Assert constraints (#[Assert\NotBlank],
+  #[Assert\Expression]) now that docblocks are ignored in ORM 3.x
+
+### Fixed
+
+- Fix PublishFilter::addFilterConstraint(): handle both ORM 2 (array)
+  and ORM 3 (object) fieldMappings format for columnName access
+
+### Changed
+
+- Bump php constraint to ^8.2
+- Widen symfony/framework-bundle to ^5.4|^6.0|^7.0
+- Widen doctrine/doctrine-bundle to ^2.7|^3.0
+- Widen doctrine/orm to ^2.13|^3.0
+- Replace deprecated psr-0 autoload with psr-4, remove target-dir
+
 ## [1.0.3] - 2024-04-04
 
 ### Fixed
@@ -45,7 +72,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Last release of v0.
 
-[Unreleased]: https://github.com/umanit/content-publication-bundle/compare/1.0.3...master
+[Unreleased]: https://github.com/umanit/content-publication-bundle/compare/2.0.0...HEAD
+
+[2.0.0]: https://github.com/umanit/content-publication-bundle/compare/1.0.3...2.0.0
 
 [1.0.3]: https://github.com/umanit/content-publication-bundle/compare/1.0.2...1.0.3
 
